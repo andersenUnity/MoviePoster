@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">film poster</string>
+    <string name="nameOfMovie">Название:</string>
+    <string name="premierDate">Дата выхода:</string>
+    <string name="movieDuration">Продолжительность:</string>
+    <string name="movieDescription">Описание:</string>
+    <string name="country">Страна:</string>
+    <string name="genre">Жанр:</string>
+    <string name="psychologicalThriller">психологический триллер</string>
+    <string name="comedy">комедия</string>
+    <string name="horror">хоррор</string>
+    <string name="detective">детектив</string>
+    <string name="fantasy">фэнтези</string>
+    <string name="hero">супергерои</string>
+    <string name="actionMovie">боевик</string>
+    <string name="romance">романтика</string>
 </resources>

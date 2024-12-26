@@ -16,22 +16,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.andersenunity.filmposter.R
 
 @Composable
 fun GetGenres() {
     val genres =
         listOf(
-            "психологический триллер",
-            "комедия",
-            "хоррор",
-            "детектив",
-            "фэнтези",
-            "супергерои",
-            "боевик",
-            "романтика"
+            stringResource(R.string.psychologicalThriller),
+            stringResource(R.string.comedy),
+            stringResource(R.string.horror),
+            stringResource(R.string.detective),
+            stringResource(R.string.fantasy),
+            stringResource(R.string.hero),
+            stringResource(R.string.actionMovie),
+            stringResource(R.string.romance)
         )
     Column(
         modifier = Modifier
@@ -40,7 +42,7 @@ fun GetGenres() {
             .fillMaxWidth(),
     ) {
         Text(
-            text = "Жанры:",
+            text = stringResource(R.string.genre),
             fontSize = 24.sp,
             fontStyle = FontStyle.Normal,
             modifier = Modifier
@@ -51,8 +53,7 @@ fun GetGenres() {
         Spacer(Modifier.padding(5.dp))
         LazyRow(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 4.dp),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(5.dp),
         ) {
             items(genres) { genre ->

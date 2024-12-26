@@ -15,9 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.andersenunity.filmposter.R
 import com.andersenunity.filmposter.models.Movies
 
 @Composable
@@ -39,7 +41,7 @@ fun PrintMovieInfo(movie: Movies) {
         ) {
             Row {
                 Text(
-                    text = "Название:",
+                    text = stringResource(R.string.nameOfMovie),
                     fontSize = 24.sp,
                     fontStyle = FontStyle.Normal,
                 )
@@ -52,7 +54,7 @@ fun PrintMovieInfo(movie: Movies) {
             }
             Row {
                 Text(
-                    text = "Дата выхода:",
+                    text = stringResource(R.string.premierDate),
                     fontSize = 24.sp,
                     fontStyle = FontStyle.Normal,
                 )
@@ -65,7 +67,7 @@ fun PrintMovieInfo(movie: Movies) {
             }
             Row {
                 Text(
-                    text = "Длительность:",
+                    text = stringResource(R.string.movieDuration),
                     fontSize = 24.sp,
                     fontStyle = FontStyle.Normal,
                 )
@@ -78,7 +80,7 @@ fun PrintMovieInfo(movie: Movies) {
             }
             Row {
                 Text(
-                    text = "Страна производства:",
+                    text = stringResource(R.string.country),
                     fontSize = 24.sp,
                     fontStyle = FontStyle.Normal,
                 )
@@ -91,7 +93,7 @@ fun PrintMovieInfo(movie: Movies) {
             }
             Row {
                 Text(
-                    text = "Жанр:",
+                    text = stringResource(R.string.genre),
                     fontSize = 24.sp,
                     fontStyle = FontStyle.Normal,
                 )
@@ -103,7 +105,7 @@ fun PrintMovieInfo(movie: Movies) {
                 )
             }
             Text(
-                text = "Описание:",
+                text = stringResource(R.string.movieDescription),
                 fontSize = 24.sp,
                 fontStyle = FontStyle.Normal,
             )
