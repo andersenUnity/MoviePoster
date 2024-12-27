@@ -1,4 +1,4 @@
-package com.andersenunity.filmposter.features.main.ui
+package com.andersenunity.filmposter.features.movie.ui
 
 
 import androidx.compose.foundation.clickable
@@ -25,11 +25,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.andersenunity.filmposter.R
-import com.andersenunity.filmposter.models.Movies
+import com.andersenunity.filmposter.models.Movie
 import com.andersenunity.filmposter.ui.theme.robotoFamily
 
 @Composable
-fun PrintMovieInfo(movie: Movies) {
+fun PrintMovieInfo(movie: Movie) {
     var isExpanded by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier

@@ -1,4 +1,4 @@
-package com.andersenunity.filmposter.features.main.ui
+package com.andersenunity.filmposter.features.movie.ui
 
 import android.content.Context
 import androidx.compose.foundation.Image
@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -25,14 +24,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.andersenunity.filmposter.R
+import com.andersenunity.filmposter.models.Movie
+import com.andersenunity.filmposter.models.testMovie_1
 import com.andersenunity.filmposter.ui.theme.robotoFamily
 
 
 @Composable
-fun LikeButton(context: Context, countOfLikes: Int) {
+fun LikeBar(context: Context, countOfLikes: Int, movie: Movie) {
     var count = countOfLikes
-    val sharedPreferences = context.getSharedPreferences("LikedPrefs", Context.MODE_PRIVATE)
-    var isLikePressed by remember { mutableStateOf(sharedPreferences.getBoolean("Licked", false)) }
     Card(
         modifier = Modifier
             .padding(horizontal = 15.dp)
@@ -57,23 +56,7 @@ fun LikeButton(context: Context, countOfLikes: Int) {
                 modifier = Modifier.padding(top = 5.dp)
             )
             Spacer(modifier = Modifier.padding(4.dp))
-            Image(
-                contentDescription = "like",
-                modifier = Modifier
-                    .size(40.dp)
-                    .clickable {
-                        isLikePressed = !isLikePressed
-                        count = if (isLikePressed) ++count else --count
-                        with(sharedPreferences.edit()) {
-                            putBoolean("Licked", isLikePressed)
-                            apply()
-                        }
-                    },
-                painter = if (isLikePressed) painterResource(R.drawable.like_sign_disable) else painterResource(
-                    R.drawable.like_sign_enable,
-                )
-            )
-
+            LikeButton(context,movie)
         }
     }
 }

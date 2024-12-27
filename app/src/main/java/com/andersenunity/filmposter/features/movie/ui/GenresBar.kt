@@ -1,4 +1,4 @@
-package com.andersenunity.filmposter.features.main.ui
+package com.andersenunity.filmposter.features.movie.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
