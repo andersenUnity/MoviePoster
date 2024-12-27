@@ -1,7 +1,7 @@
 package com.andersenunity.filmposter.models
 
 data class Movies(
-    var posterId: Int,
+    var posterUrl: String,
     var nameOfMovie: String,
     var premierDate: String,
     var movieDuration: String,

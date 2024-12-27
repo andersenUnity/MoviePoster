@@ -7,12 +7,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.andersenunity.filmposter.models.Movies
 
 @Composable
-fun Poster() {
+fun Poster(movie: Movies) {
     AsyncImage(
         model =
-        "https://i.pinimg.com/originals/f2/18/9e/f2189e8139bb7b95cafa0084a98dacb4.jpg",
+        movie.posterUrl,
         contentDescription = "poster",
         modifier = Modifier
             .padding(horizontal = 15.dp)

@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.andersenunity.filmposter.R
 import com.andersenunity.filmposter.features.main.ui.GetGenres
 import com.andersenunity.filmposter.features.main.ui.LikeButton
 import com.andersenunity.filmposter.features.main.ui.Poster
@@ -20,7 +19,7 @@ import kotlin.random.Random
 @Composable
 fun MainScreen(context : Context) {
     val movie = Movies(
-        R.drawable.fight_club_poster,
+        "https://i.pinimg.com/originals/f2/18/9e/f2189e8139bb7b95cafa0084a98dacb4.jpg",
         "Бойцовский клуб",
         "1999 г.",
         "139 мин.",
@@ -38,7 +37,7 @@ fun MainScreen(context : Context) {
             GetGenres()
         }
         item {
-            Poster()
+            Poster(movie)
             Spacer(modifier = Modifier.padding(8.dp))
         }
         item {

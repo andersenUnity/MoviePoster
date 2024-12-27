@@ -20,11 +20,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColor
 import com.andersenunity.filmposter.R
+import com.andersenunity.filmposter.ui.theme.robotoFamily
 
 
 @Composable
@@ -41,9 +42,18 @@ fun LikeButton(context: Context, countOfLikes: Int) {
     ) {
         Row(modifier = Modifier.padding(15.dp)) {
             Text(
-                text = "Нравится: $count",
                 fontSize = 24.sp,
-                fontStyle = FontStyle.Normal,
+                text = stringResource(R.string.like),
+                fontFamily = robotoFamily,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(top = 5.dp)
+            )
+            Spacer(modifier = Modifier.padding(4.dp))
+            Text(
+                text = "$count",
+                fontSize = 24.sp,
+                fontFamily = robotoFamily,
+                fontWeight = FontWeight.Light,
                 modifier = Modifier.padding(top = 5.dp)
             )
             Spacer(modifier = Modifier.padding(4.dp))
