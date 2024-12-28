@@ -13,18 +13,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import com.andersenunity.filmposter.features.movie.ui.GetGenres
+import com.andersenunity.filmposter.features.main.ui.GetGenres
+import com.andersenunity.filmposter.features.movie.ui.BackButton
 import com.andersenunity.filmposter.features.movie.ui.LikeBar
 import com.andersenunity.filmposter.features.movie.ui.Poster
 import com.andersenunity.filmposter.features.movie.ui.PrintMovieInfo
+import com.andersenunity.filmposter.models.Movie
 import com.andersenunity.filmposter.models.testMovie_1
 import kotlin.random.Random
 
-class MovieScreen : Screen{
-    @Composable
+class MovieScreen(inputMovie:Movie) : Screen{
+    val movie = inputMovie
+        @Composable
     override fun Content() {
         val randomCountOfLikes by remember { mutableIntStateOf(Random.nextInt(2000, 3000)) }
-        val rfa = randomCountOfLikes
         val context = LocalContext.current
         LazyColumn(
             modifier = Modifier
@@ -32,18 +34,18 @@ class MovieScreen : Screen{
                 .padding(top = 8.dp)
         ) {
             item {
-                GetGenres()
+                BackButton()
             }
             item {
-                Poster(testMovie_1)
+                Poster(movie)
                 Spacer(modifier = Modifier.padding(8.dp))
             }
             item {
-                LikeBar(context = context, randomCountOfLikes, movie = testMovie_1)
+                LikeBar(context = context, randomCountOfLikes, movie = movie)
                 Spacer(modifier = Modifier.padding(8.dp))
             }
             item {
-                PrintMovieInfo(testMovie_1)
+                PrintMovieInfo(movie)
                 Spacer(modifier = Modifier.padding(8.dp))
             }
         }

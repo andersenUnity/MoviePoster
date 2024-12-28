@@ -31,6 +31,7 @@ import com.andersenunity.filmposter.ui.theme.robotoFamily
 
 @Composable
 fun LikeBar(context: Context, countOfLikes: Int, movie: Movie) {
+    val isLiked = movie.isLiked
     var count = countOfLikes
     Card(
         modifier = Modifier
@@ -49,7 +50,7 @@ fun LikeBar(context: Context, countOfLikes: Int, movie: Movie) {
             )
             Spacer(modifier = Modifier.padding(4.dp))
             Text(
-                text = "$count",
+                text = if (isLiked) "${++count}" else "${--count}",
                 fontSize = 24.sp,
                 fontFamily = robotoFamily,
                 fontWeight = FontWeight.Light,

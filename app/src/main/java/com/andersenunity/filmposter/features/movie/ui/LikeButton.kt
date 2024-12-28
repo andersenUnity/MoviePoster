@@ -33,8 +33,9 @@ fun LikeButton(context: Context, movie: Movie) {
             .size(34.dp)
             .clickable {
                 isLikePressed = !isLikePressed
+                movie.isLiked = isLikePressed
                 with(sharedPreferences.edit()) {
-                    putBoolean("Licked", isLikePressed)
+                    putBoolean("Licked", movie.isLiked)
                     apply()
                 }
             },
@@ -42,6 +43,5 @@ fun LikeButton(context: Context, movie: Movie) {
             R.drawable.like_sign_enable,
         )
     )
-    movie.isLiked = isLikePressed
 }
 //count = if (isLikePressed) ++count else --count

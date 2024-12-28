@@ -26,9 +26,6 @@ fun MoviesColumn(moviesList: List<Movie>) {
             } else {
                 MovieItem(moviesList[index], Modifier.fillMaxWidth(0.5f))
             }
-
-
-
         }
     }
 }

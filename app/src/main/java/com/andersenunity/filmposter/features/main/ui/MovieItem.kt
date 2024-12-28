@@ -1,6 +1,7 @@
 package com.andersenunity.filmposter.features.main.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -18,6 +19,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import com.andersenunity.filmposter.features.movie.MovieScreen
 import com.andersenunity.filmposter.features.movie.ui.LikeButton
 import com.andersenunity.filmposter.models.Movie
 import com.andersenunity.filmposter.ui.theme.robotoFamily
@@ -25,11 +29,13 @@ import com.andersenunity.filmposter.ui.theme.robotoFamily
 @Composable
 fun MovieItem(movie: Movie, modifier: Modifier) {
     val context = LocalContext.current
+    val navigator = LocalNavigator.currentOrThrow
     Column(modifier = modifier) {
         Box(
             modifier = Modifier
                 .aspectRatio(9 / 16f)
-                .fillMaxWidth(),
+                .fillMaxWidth().clickable {
+                    navigator.push(MovieScreen(movie))},
             contentAlignment = Alignment.BottomEnd
         ) {
             MenuPoster(movie)
