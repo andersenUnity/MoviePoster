@@ -16,7 +16,7 @@ fun MoviesColumn(moviesList: List<Movie>) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 15.dp)
-                .padding(top = 20.dp),
+                .padding(vertical = 20.dp),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             if (index + 1 < moviesList.size) {

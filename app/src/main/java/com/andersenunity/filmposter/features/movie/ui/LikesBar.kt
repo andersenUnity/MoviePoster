@@ -32,7 +32,7 @@ import com.andersenunity.filmposter.ui.theme.robotoFamily
 
 @Composable
 fun LikeBar(context: Context, movie: Movie) {
-    val count = movie.likesCount
+
     val sharedPreferences = context.getSharedPreferences(movie.nameOfMovie, Context.MODE_PRIVATE)
     var likesCount by remember { mutableIntStateOf(movie.likesCount) }
     var isLikePressed by remember {
@@ -60,7 +60,7 @@ fun LikeBar(context: Context, movie: Movie) {
                 )
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = "${movie.likesCount}",
+                    text = "${likesCount}",
                     fontSize = 24.sp,
                     fontFamily = robotoFamily,
                     fontWeight = FontWeight.Light,
@@ -72,10 +72,10 @@ fun LikeBar(context: Context, movie: Movie) {
                         .size(34.dp)
                         .clickable {
                             isLikePressed = !isLikePressed
-                            if (isLikePressed) ++movie.likesCount else --movie.likesCount
+                            if (isLikePressed) ++likesCount  else --likesCount
                             with(sharedPreferences.edit()) {
                                 putBoolean("Licked", isLikePressed)
-//                                putInt("count",likesCount)
+                                putInt("count",likesCount)
                                 apply()
                             }
                         },
