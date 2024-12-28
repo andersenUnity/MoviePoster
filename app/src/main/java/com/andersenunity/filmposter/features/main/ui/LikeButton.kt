@@ -31,13 +31,14 @@ fun LikeButton(context: Context, movie: Movie) {
             .size(34.dp)
             .clickable {
                 isLikePressed = !isLikePressed
+                if (isLikePressed) ++movie.likesCount else --movie.likesCount
                 with(sharedPreferences.edit()) {
                     putBoolean("Licked", isLikePressed)
                     apply()
                 }
             },
-        painter = if (isLikePressed) painterResource(R.drawable.like_sign_enable) else painterResource(
-            R.drawable.like_sign_disable,
+        painter = if (isLikePressed) painterResource(R.drawable.like_sign_disable) else painterResource(
+            R.drawable.like_sign_enable,
         )
     )
 }

@@ -25,7 +25,7 @@ class MovieScreen(inputMovie: Movie) : Screen {
 
     @Composable
     override fun Content() {
-        val countOfLikes by remember { mutableIntStateOf(movie.likesCount) }
+
         val context = LocalContext.current
         LazyColumn(
             modifier = Modifier
@@ -45,7 +45,7 @@ class MovieScreen(inputMovie: Movie) : Screen {
                 Spacer(modifier = Modifier.padding(8.dp))
             }
             item {
-                LikeBar(context = context, countOfLikes, movie)
+                LikeBar(context = context,movie,)
                 Spacer(modifier = Modifier.padding(8.dp))
             }
             item {
@@ -57,3 +57,5 @@ class MovieScreen(inputMovie: Movie) : Screen {
 
 
 }
+
+

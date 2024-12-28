@@ -13,6 +13,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -30,9 +31,10 @@ import com.andersenunity.filmposter.ui.theme.robotoFamily
 
 
 @Composable
-fun LikeBar(context: Context, countOfLikes: Int, movie: Movie) {
-    var count = countOfLikes
+fun LikeBar(context: Context, movie: Movie) {
+    val count = movie.likesCount
     val sharedPreferences = context.getSharedPreferences(movie.nameOfMovie, Context.MODE_PRIVATE)
+    var likesCount by remember { mutableIntStateOf(movie.likesCount) }
     var isLikePressed by remember {
         mutableStateOf(
             sharedPreferences.getBoolean(
@@ -58,7 +60,7 @@ fun LikeBar(context: Context, countOfLikes: Int, movie: Movie) {
                 )
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = if (isLikePressed) "${++count}" else "${--count}",
+                    text = "${movie.likesCount}",
                     fontSize = 24.sp,
                     fontFamily = robotoFamily,
                     fontWeight = FontWeight.Light,
@@ -70,14 +72,15 @@ fun LikeBar(context: Context, countOfLikes: Int, movie: Movie) {
                         .size(34.dp)
                         .clickable {
                             isLikePressed = !isLikePressed
-                            movie.isLiked = isLikePressed
+                            if (isLikePressed) ++movie.likesCount else --movie.likesCount
                             with(sharedPreferences.edit()) {
                                 putBoolean("Licked", isLikePressed)
+//                                putInt("count",likesCount)
                                 apply()
                             }
                         },
-                    painter = if (isLikePressed) painterResource(R.drawable.like_sign_enable) else painterResource(
-                        R.drawable.like_sign_disable,
+                    painter = if (isLikePressed) painterResource(R.drawable.like_sign_disable) else painterResource(
+                        R.drawable.like_sign_enable,
                     )
                 )
             }
