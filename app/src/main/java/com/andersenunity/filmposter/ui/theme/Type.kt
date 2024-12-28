@@ -1,6 +1,7 @@
 package com.andersenunity.filmposter.ui.theme
 
-import androidx.compose.material3.Typography
+import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -10,33 +11,25 @@ import com.andersenunity.filmposter.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp,
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
+    h1 = TextStyle(
+        fontFamily = FontFamily(Font(R.font.roboto_italic)),
+        fontSize = 24.sp,
     ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+    h2 = TextStyle(
+        fontFamily = FontFamily(Font(R.font.roboto_bold)),
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        color = Color.White
+    ),
+    h3 = TextStyle(
+        fontFamily = FontFamily(Font(R.font.roboto_bold)),
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        color = Color.Black
     )
-    */
 )
 val robotoFamily = FontFamily(
     Font(R.font.roboto_medium, FontWeight.SemiBold),
     Font(R.font.roboto_light_italic, FontWeight.Light),
 
-
-)
+    )

@@ -13,32 +13,27 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.andersenunity.filmposter.R
 import com.andersenunity.filmposter.models.Movie
+import com.andersenunity.filmposter.models.savePreferences
+import com.andersenunity.filmposter.models.readPreferences
 
 @Composable
 fun LikeButton(context: Context, movie: Movie) {
-    val sharedPreferences = context.getSharedPreferences(movie.nameOfMovie, Context.MODE_PRIVATE)
+    val input = readPreferences(context,movie)
     var isLikePressed by remember {
         mutableStateOf(
-            sharedPreferences.getBoolean(
-                "Licked",
-                movie.isLiked
-            )
+            input
         )
     }
-    movie.isLiked = isLikePressed
     Image(
         contentDescription = "like", modifier = androidx.compose.ui.Modifier
             .size(34.dp)
             .clickable {
                 isLikePressed = !isLikePressed
-                if (isLikePressed) ++movie.likesCount else --movie.likesCount
-                with(sharedPreferences.edit()) {
-                    putBoolean("Licked", isLikePressed)
-                    apply()
-                }
+                if (isLikePressed) ++movie.likesCount  else --movie.likesCount
+                savePreferences(context,isLikePressed,movie)
             },
-        painter = if (isLikePressed) painterResource(R.drawable.like_sign_disable) else painterResource(
-            R.drawable.like_sign_enable,
+        painter = if (isLikePressed) painterResource(R.drawable.like_sign_enable) else painterResource(
+            R.drawable.like_sign_disable,
         )
     )
 }

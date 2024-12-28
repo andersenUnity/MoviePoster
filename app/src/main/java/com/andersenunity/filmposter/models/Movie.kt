@@ -2,7 +2,6 @@ package com.andersenunity.filmposter.models
 
 import kotlin.random.Random
 
-
 data class Movie(
     var posterUrl: String,
     var nameOfMovie: String,
@@ -13,6 +12,11 @@ data class Movie(
     var movieDescription: String,
     var isLiked: Boolean = false,
     var likesCount : Int,
+)
+
+
+data class MovieUserData(
+    var isLiked: Boolean
 )
 
 val testMovie_1 = Movie(
