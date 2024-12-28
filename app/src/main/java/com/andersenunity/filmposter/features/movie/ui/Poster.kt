@@ -15,13 +15,10 @@ import coil3.compose.AsyncImage
 import com.andersenunity.filmposter.models.Movie
 
 @Composable
-fun Poster(movie: Movie) {
+fun Poster(movie: Movie, modifier: Modifier) {
     Surface(
         shape = RoundedCornerShape(20.dp),
-        modifier = Modifier
-            .padding(horizontal = 15.dp)
-            .padding(top = 8.dp)
-            .aspectRatio(9 / 16f)
+        modifier = modifier
             .fillMaxSize(),
         shadowElevation = 8.dp
     ) {

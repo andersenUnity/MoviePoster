@@ -26,7 +26,6 @@ data class MainScreen(val movieList: List<Movie>) : Screen {
             }
             item {
                 MoviesColumn(movieList)
-
             }
         }
     }

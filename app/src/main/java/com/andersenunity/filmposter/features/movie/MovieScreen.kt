@@ -2,6 +2,7 @@ package com.andersenunity.filmposter.features.movie
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -13,20 +14,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
-import com.andersenunity.filmposter.features.main.ui.GetGenres
 import com.andersenunity.filmposter.features.movie.ui.BackButton
 import com.andersenunity.filmposter.features.movie.ui.LikeBar
 import com.andersenunity.filmposter.features.movie.ui.Poster
 import com.andersenunity.filmposter.features.movie.ui.PrintMovieInfo
 import com.andersenunity.filmposter.models.Movie
-import com.andersenunity.filmposter.models.testMovie_1
-import kotlin.random.Random
 
-class MovieScreen(inputMovie:Movie) : Screen{
+class MovieScreen(inputMovie: Movie) : Screen {
     val movie = inputMovie
-        @Composable
+
+    @Composable
     override fun Content() {
-        val randomCountOfLikes by remember { mutableIntStateOf(Random.nextInt(2000, 3000)) }
+        val countOfLikes by remember { mutableIntStateOf(movie.likesCount) }
         val context = LocalContext.current
         LazyColumn(
             modifier = Modifier
@@ -37,11 +36,16 @@ class MovieScreen(inputMovie:Movie) : Screen{
                 BackButton()
             }
             item {
-                Poster(movie)
+                Poster(
+                    movie, modifier = Modifier
+                        .padding(horizontal = 15.dp)
+                        .padding(top = 8.dp)
+                        .aspectRatio(9 / 16f)
+                )
                 Spacer(modifier = Modifier.padding(8.dp))
             }
             item {
-                LikeBar(context = context, randomCountOfLikes, movie = movie)
+                LikeBar(context = context, countOfLikes, movie)
                 Spacer(modifier = Modifier.padding(8.dp))
             }
             item {
